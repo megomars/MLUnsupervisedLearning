@@ -29,7 +29,9 @@ kmeans_dset
 summary(kmeans_dset)
 table(kmeans_dset$cluster)
 plot(age ~ education, data = dset, col = kmeans_dset$cluster)
-
+```
+## How many clusters should I have?
+```{r}
 # Step 2
 # Find a better value for the number of clusters using a scree plot
 
@@ -52,6 +54,8 @@ plot(1:8, wss, type = "b",
 k <- 3
 
 ```
+
+
 
 
 
