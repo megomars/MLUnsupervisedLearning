@@ -41,7 +41,56 @@ plot(pdata[, c("Defense", "Speed")],
 ################################### HCLUST
 
 #Calculate the distance between 2 values
-# dist_matrix <- dist(x)
-# hclust(d=dist_matrix)
+
+two_players <- data.frame(c(0,9),c(0,12))
+names(two_players) <- c("name1", "name2")
+two_players
+dist_matrix <- dist(two_players, method = "euclidean")
+dist_matrix
+hclust(d=dist_matrix)
 
 # hclust(d=s)
+
+
+
+############################# SCALE YOUR VALUES
+dist_trees <- dist(three_trees)
+# Scale three trees & calculate the distance  
+scaled_three_trees <- scale(three_trees)
+dist_scaled_trees <- dist(scaled_three_trees)
+
+
+############################# Categorical data ---- METHOD = "BINARY"
+df <- data.frame(c(TRUE, FALSE, TRUE),c(TRUE, TRUE, FALSE),c(FALSE, TRUE, TRUE), c(FALSE, TRUE, FALSE))
+df
+names(df)<- c("wine","beer","whiskey","vodka")
+dist (df, method="binary")
+
+
+############################# DUMIFICATION - Multiple categorical values
+
+install.packages("dummies")
+library(dummies)
+
+du <- data.frame(c("red","green","blue","blue"),c("soccer", "hockey", "hockey", "soccer"))
+names(du) <- c("color","sport")
+du
+
+dummy_du <- dummy.data.frame(du)
+dist(dummy_du, method="binary")
+
+
+# Dummify the Survey Data
+library(dummies)
+dummy_survey <- dummy.data.frame(job_survey)
+
+job_survey
+
+# Calculate the Distance
+dist_survey <- dist(dummy_survey, method="binary")
+
+# Print the Original Data
+job_survey
+
+# Print the Distance Matrix
+dist_survey
