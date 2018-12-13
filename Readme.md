@@ -6,7 +6,7 @@ What kinds of problems are suitable for cluster analysis?
 - Using consumer behavior data to identify distinct segments within a market.
 - Identifying distinct groups of stocks that follow similar trading patterns.
 
-## Theory
+## 1. Theory
 
 Distance = 1-Similarity
 The goal is to maximize BSS (betweeness) and minimize TWSS (total)
@@ -14,7 +14,7 @@ The goal is to maximize BSS (betweeness) and minimize TWSS (total)
 
 Before getting started we first need to make sure that we standardise of measurements.
 
-## Pre-processing
+## 2. Pre-processing
 - No missing values
 - Features have similar scales
 - Calculate distances
@@ -44,10 +44,17 @@ dummy.data.frame(survey_b)
 dist(survey_a, method = "binary")
 ```
 
-## Which features to use
+## 3. Which features to use
 
-## Clustering method
 
+
+
+
+
+
+## 4. Clustering method
+
+----------
 ### Hierarchical Clustering
 ```{R}
 # Here we have continuous data which is already standardised
@@ -88,12 +95,53 @@ plot(dend_colored)
 
 ```
 
-## Analyze the output for meaning
+Here is a complete sample:
+```{R}
+# Calculate Euclidean distance between customers
+dist_customers <- dist(customers_spend, method="euclidean")
+
+# Generate a complete linkage analysis 
+hc_customers <- hclust(dist_customers, method="complete")
+
+# Plot the dendrogram
+plot(hc_customers)
+
+# Create a cluster assignment vector at h = 15000
+clust_customers <- cutree(hc_customers, h=15000)
+
+# Generate the segmented customers dataframe
+segment_customers <- mutate(customers_spend, cluster = clust_customers)
+
+# Count the number of customers that fall into each cluster
+count(segment_customers, cluster)
+
+# Color the dendrogram based on the height cutoff
+dend_customers <- as.dendrogram(hc_customers)
+dend_colored <- color_branches(dend_customers, h=15000)
+
+# Plot the colored dendrogram
+plot(dend_colored)
+
+# Calculate the mean for each category
+segment_customers %>% 
+  group_by(cluster) %>% 
+  summarise_all(funs(mean(.)))
+
+```
+
+Here are some conclusions that you can draw
+![Interpretting the results](interpret.png)
+----------
+### KMEANS
+
+
+
+## 5. Analyze the output for meaning
 Make sure you understand the problem really well.
 
 
 
 
-### KMEANS
+
 
 
