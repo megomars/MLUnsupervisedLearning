@@ -29,19 +29,42 @@ scale(height_weight) #standardises to a mean of 0 and sd of 1
 dist(two_players, method = "euclidean")
 ```
 
-### Calculate the distance (between categorical variables)
+### Calculate the distance (between 2 categorical variables)
 ```{R}
-dist(two_players, method = "euclidean")
+dist(survey_a, method = "binary")
 ```
 ![Jaccard index](jaccard.png)
-  # dummification
-  library(dummies)
-  dummies.data.frame()
-  scale()
+
+
+### Calculate the distance (between 3 or more categorical variables)
+#### We first have to dummify our data
+```{R}
+library(dummies)
+dummy.data.frame(survey_b)
+dist(survey_a, method = "binary")
+```
 
 ## Which features to use
 
 ## Clustering method
+
+### Hierarchical
+```{R}
+# Here we have continuous data which is already standardised
+
+dist_players <- dist(players, method="euclidean")
+hc_player <- hclust(dist_players, method="complete")
+
+output <- cuttree(hc_player, k=2)
+output # a vector which tells us where each observation belongs e.g.
+# 1 1 1 1 2 2
+
+# Append back to original data 
+players_clustered <- mutate(players, group = output)
+
+# we can now plot them
+ggplot(players_clustered, aes(x=x, y=y, color=factor(cluster)))+ geom_point()
+```
 
 ## Analyze the output for meaning
 Make sure you understand the problem really well.
