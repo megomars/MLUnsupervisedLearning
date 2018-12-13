@@ -1,10 +1,9 @@
-# Clustering - preparing your data
+# Cluster Analysis
 
-Cluster analysis is a form of exploratory data analysis (EDA) which involves grouping observations that share similar characteristics. This is done primarily by measuring the distance between observations.
+Cluster analysis is a form of exploratory data analysis (EDA) which involves grouping observations that share similar characteristics. This is done primarily by measuring the distance between observations. Cluster Analysis is an application of unsupervised machine learning where no training data is provided. Commonly used algorithms for clustering include: kmeans, mean-shift, dbscan, GMM and Hierarchical clustering.
 
 What kinds of problems are suitable for cluster analysis?
 - Using consumer behavior data to identify distinct segments within a market.
-
 - Identifying distinct groups of stocks that follow similar trading patterns.
 
 ## Theory
@@ -13,12 +12,12 @@ Distance = 1-Similarity
 The goal is to maximize BSS (betweeness) and minimize TWSS (total)
 
 
-Before getting started we first need to make sure that our values can indeed be differentiated.
+Before getting started we first need to make sure that we standardise of measurements.
 
 ## Pre-processing
 - No missing values
 - Features have similar scales
-- Then calculate distance
+- Calculate distances
 
 ### Calculate a standardised scale (if measurements are meters and kilograms)
 ```{R}
