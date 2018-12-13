@@ -54,6 +54,7 @@ dist(survey_a, method = "binary")
 
 ## 4. Clustering method
 
+![comparing algorithms](learn.png)
 ----------
 ### Hierarchical Clustering
 ```{R}
@@ -133,6 +134,50 @@ Here are some conclusions that you can draw
 ![Interpretting the results](interpret.png)
 ----------
 ### KMEANS
+You've got to know k in the beginning. If you don't you can try these two techniques:
+1. Elbow method (tot.withinss)
+1. Silhouette analysis ()
+
+![Fundamentals of kmeans](kmean.png)
+
+Here is a kmeans example (based on continuous data)
+```{R}
+# Build a kmeans model
+model_km2 <- kmeans(lineup, centers = 2)
+
+# Extract the cluster assignment vector from the kmeans model
+clust_km2 <- model_km2$cluster
+
+# Create a new dataframe appending the cluster assignment
+lineup_km2 <- mutate(lineup, cluster = clust_km2)
+
+# Plot the positions of the players and color them using their cluster
+ggplot(lineup_km2, aes(x = x, y = y, color = factor(cluster))) +
+  geom_point()
+
+```
+
+Here is a real example with the customer data
+```{R}
+set.seed(42)
+
+# Build a k-means model for the customers_spend with a k of 2
+model_customers <- kmeans(customers_spend, centers=2)
+
+# Extract the vector of cluster assignments from the model
+clust_customers <- model_customers$cluster
+
+# Build the segment_customers dataframe
+segment_customers <- mutate(customers_spend, cluster = clust_customers)
+
+# Calculate the size of each cluster
+count(segment_customers, cluster)
+
+# Calculate the mean for each category
+segment_customers %>% 
+  group_by(cluster) %>% 
+  summarise_all(funs(mean(.)))
+```
 
 
 

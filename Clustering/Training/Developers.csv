@@ -1,0 +1,11 @@
+first_name,last_name,dob,position,salary,languages,organization,email,is_married,gender
+Rishikesh,Agrawani,14/08/1993,Python developer,1000000,"Python,JavaScript,Golang,Java",Sjain ventures limited,rishikesh@sjainventures.com,False,Male
+Joydeep,Ghosh,30/1/1990,Java developer,2000000,"C,Java",Kiwi Inc.,ghosh@gmail.com,True,Male
+Shrikant,Jha,5/9/1994,Ionic developer,8000000,"JavaScript",Villa institue,srikant@gmail.com,False,Male
+Gauri,Devi,10/11/1995,PHP developer,600000,"PHP,Python",Drisyam techonologis,gauri@gmail.com,False,Female
+Gourang,Dev,6/7/1980,Ionic developer,5000000,"C,JavaScript,C++",Kritivyam technologies pvt ltd,gourang@gmail.com,True,Male
+Miley,Gauss,5/6/1991,Android developer,3000000,"Java,C++",Atzen soft pvt ltd,miley@mail.com,False,Female
+Bifelson,Viddok,8/5/1993,Ruby developer,3500000,"Ruby,Java,C++",Glory soft pvt ltd,bifelson@gmail.com,True,Male
+Tina,Jha,8/11/1889,Golang developer,4000000,"Golang,PHP,Python,Java",Briting soft ltd,tina@gmail.com,True,Female
+Falcon,Jemila,7/7/1992,C# developer,6000000,"C#,C++,C",Foby India pvt ltd,falcon@gmail.com,False,Male
+Dodly,Julfy,8/9/1995,Android developer,750000,"Golang,Java",Pera soft pvt ltd,dodly@gmail.com,False,Female
