@@ -94,3 +94,16 @@ job_survey
 
 # Print the Distance Matrix
 dist_survey
+
+
+
+xf <- data.frame(c(-1,-2,8,7,-12,-15),c(1,-3,6,-8,8,0))
+xf
+names(xf) <- c("x","y")
+xf
+
+dp <- dist(xf, method="euclidean")
+hc_player <- hclust(dp, method="complete")
+
+hc_player
+cuttree(hc_player, k=2)

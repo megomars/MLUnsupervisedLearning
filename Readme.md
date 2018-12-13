@@ -2,6 +2,10 @@
 
 Cluster analysis is a form of exploratory data analysis (EDA) which involves grouping observations that share similar characteristics. This is done primarily by measuring the distance between observations. Cluster Analysis is an application of unsupervised machine learning where no training data is provided. Commonly used algorithms for clustering include: kmeans, mean-shift, dbscan, GMM and Hierarchical clustering.
 
+In order to make meaningful conclusions about clusters, you really need creativity and contextual knowledge.
+
+The goal of using cluster analysis to identify personas is to derive an objective understanding of who your readers are rather than painting an imaginary ideal picture of who your think your audience is. By combining the audience you'd like to target with the audience you actually have you can find a happy medium.
+
 What kinds of problems are suitable for cluster analysis?
 - Using consumer behavior data to identify distinct segments within a market.
 - Identifying distinct groups of stocks that follow similar trading patterns.
