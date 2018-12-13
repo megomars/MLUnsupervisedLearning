@@ -48,14 +48,18 @@ dist(survey_a, method = "binary")
 
 ## Clustering method
 
-### Hierarchical
+### Hierarchical Clustering
 ```{R}
 # Here we have continuous data which is already standardised
 
 dist_players <- dist(players, method="euclidean")
 hc_player <- hclust(dist_players, method="complete")
+# hc_player <- hclust(dist_players, method="single")
+# hc_player <- hclust(dist_players, method="average")
 
-output <- cuttree(hc_player, k=2)
+output <- cutree(hc_player, k=2)
+# or we can set the height with h=15
+output <- cutree(hc_player, h=15)
 output # a vector which tells us where each observation belongs e.g.
 # 1 1 1 1 2 2
 
@@ -64,8 +68,25 @@ players_clustered <- mutate(players, group = output)
 
 # we can now plot them
 ggplot(players_clustered, aes(x=x, y=y, color=factor(cluster)))+ geom_point()
+
+# Count the number of clusters
+count(players_clustered, vars="output")
 ```
 ![results of cluster](soccer.png)
+
+To see a visual representation of the tree we build a dendrogram as seen below:
+![Tree diagram](dendrogram.png)
+```{R}
+plot(players_clustered)
+
+# coloring your dendrogram:
+library(dendextend)
+dend_players <- as.dendrogram(hc_player)
+dend_colored <- color_branches(dend_players h=15) # set height
+dend_colored <- color_branches(dend_players k=2) # set groups
+plot(dend_colored)
+
+```
 
 ## Analyze the output for meaning
 Make sure you understand the problem really well.
@@ -73,8 +94,6 @@ Make sure you understand the problem really well.
 
 
 
+### KMEANS
 
 
-#scale
-
-kmeans(x,4,nstart=20)
