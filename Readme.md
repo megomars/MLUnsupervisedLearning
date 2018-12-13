@@ -65,6 +65,7 @@ players_clustered <- mutate(players, group = output)
 # we can now plot them
 ggplot(players_clustered, aes(x=x, y=y, color=factor(cluster)))+ geom_point()
 ```
+![results of cluster](soccer.png)
 
 ## Analyze the output for meaning
 Make sure you understand the problem really well.
